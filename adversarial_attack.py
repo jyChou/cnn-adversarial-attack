@@ -1,6 +1,6 @@
 import torch
 
-def target_adversarial_image(model, x, y_target, epochs=1000, l=15000, eps=0.03):
+def targeted_adversarial_attack(model, x, y_target, epochs=1000, l=15000, eps=0.03):
     
     x_adv, x = x.cuda(), x.cuda()
     min_loss = float('inf')
@@ -41,7 +41,7 @@ def target_adversarial_image(model, x, y_target, epochs=1000, l=15000, eps=0.03)
             
     return x_adv
 
-def non_target_adversarial_image(model, x, epochs=5, l=15000, eps=0.03):
+def non_targeted_adversarial_attack(model, x, epochs=5, l=15000, eps=0.03):
     
     x_adv, x = x.cuda(), x.cuda()
     max_loss = float('-inf')

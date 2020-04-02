@@ -78,8 +78,13 @@ def non_targeted_adversarial_attack(model, x, epochs=5, l=15000, eps=0.03):
             tmp = torch.where(tmp < x - eps, x - eps, tmp)
             x_prime = torch.autograd.Variable(tmp, requires_grad=True).cuda()
     
-    # output = vgg16(x_adv)
+    # get new prediction and cofidence
+    # output = model(x_adv)
     # value, category = torch.max(output, 1)
     # prob = torch.nn.functional.softmax(output, dim = 1)[0][category]
     # print("New Predict class: {}, Probability: {}".format(classes[int(category[0].data)], prob[0].data))
     return x_adv
+
+
+def one_pixel_attack():
+    pass
